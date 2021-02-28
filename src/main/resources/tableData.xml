@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:tableValues.properties"/>
+
+    <bean id = "department1"
+          class="com.example.dbtest.domain.Department">
+<!--        <property name="salaries">-->
+<!--            <set>-->
+<!--                <ref bean="salary1"/>-->
+<!--                <ref bean="salary3"/>-->
+<!--            </set>-->
+<!--        </property>-->
+        <property name="departmentName" value="${department1.name}"/>
+        <property name="headOfDepartmentName" value="${department1.head.name}"/>
+    </bean>
+    <bean id = "department2"
+          class="com.example.dbtest.domain.Department">
+<!--        <property name="salaries">-->
+<!--            <set>-->
+<!--                <ref bean="salary2"/>-->
+<!--            </set>-->
+<!--        </property>-->
+        <property name="departmentName" value="${department2.name}"/>
+        <property name="headOfDepartmentName" value="${department2.head.name}"/>
+    </bean>
+
+
+
+    <bean id = "lector1"
+          class="com.example.dbtest.domain.Lector">
+        <property name="lastName" value="${lector1.lastName}"/>
+        <property name="firstName" value="${lector1.firstName}"/>
+        <property name="surName" value="${lector1.surName}"/>
+    </bean>
+    <bean id = "lector2"
+          class="com.example.dbtest.domain.Lector">
+        <property name="lastName" value="${lector2.lastName}"/>
+        <property name="firstName" value="${lector2.firstName}"/>
+        <property name="surName" value="${lector2.surName}"/>
+    </bean>
+
+
+
+    <bean id = "salary1"
+          class="com.example.dbtest.domain.Salary">
+        <property name="lector" ref="lector1"/>
+        <property name="department" ref="department1"/>
+        <property name="amount" value="${salary1.amount}"/>
+    </bean>
+    <bean id = "salary2"
+          class="com.example.dbtest.domain.Salary">
+        <property name="lector" ref="lector1"/>
+        <property name="department" ref="department2"/>
+        <property name="amount" value="${salary2.amount}"/>
+    </bean>
+    <bean id = "salary3"
+          class="com.example.dbtest.domain.Salary">
+        <property name="lector" ref="lector2"/>
+        <property name="department" ref="department1"/>
+        <property name="amount" value="${salary3.amount}"/>
+    </bean>
+
+</beans>
